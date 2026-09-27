@@ -1,0 +1,49 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+expressions (
+    epss1
+    {
+        field epss;
+        keepPatches 1;
+        expression "0.55";
+        condition "pos().x>=0.02 && pos().y>=0.052+0.003*sin((2/12)*1000*3.1415926*(pos().x)-(2*3.1415926*20/12))";
+    }
+    epss2
+    {
+        field epss;
+        keepPatches 1;
+        expression "0.55";
+        condition "pos().x>=0.02 && pos().y<=0.048+0.003*sin((2/12)*1000*3.1415926*(pos().x)-(2*3.1415926*20/12))";
+    }
+    Solid1
+    {
+        field Solid;
+        keepPatches 1;
+        expression "1";
+        condition "pos().x>=0.02 && pos().y>=0.052+0.003*sin((2/12)*1000*3.1415926*(pos().x)-(2*3.1415926*20/12))";
+    }
+    Solid2
+    {
+        field Solid;
+        keepPatches 1;
+        expression "1";
+        condition "pos().x>=0.02 && pos().y<=0.048+0.003*sin((2/12)*1000*3.1415926*(pos().x)-(2*3.1415926*20/12))";
+    }
+);
+
+// ************************************************************************* //

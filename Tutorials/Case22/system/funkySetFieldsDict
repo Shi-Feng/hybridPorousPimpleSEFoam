@@ -1,0 +1,63 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+expressions (
+    epss1
+    {
+        field epss;
+        keepPatches 1;
+        expression "0";
+        condition "pos().x>=0.02 && pos().y>=-0.466*pos().x+0.10032 && pos().y<=-0.466*pos().x+0.10232";
+    }
+    epss2
+    {
+        field epss;
+        keepPatches 1;
+        expression "0";
+        condition "pos().x>=0.02 && pos().y>=0.466*pos().x-0.00232 && pos().y<=0.466*pos().x-0.00032";
+    }
+    Solid1
+    {
+        field Solid;
+        keepPatches 1;
+        expression "0";
+        condition "pos().x>=0.02 && pos().y>=-0.466*pos().x+0.10032 && pos().y<=-0.466*pos().x+0.10232";
+    }
+    Solid2
+    {
+        field Solid;
+        keepPatches 1;
+        expression "0";
+        condition "pos().x>=0.02 && pos().y>=0.466*pos().x-0.00232 && pos().y<=0.466*pos().x-0.00032";
+    }
+    epss3
+    {
+        field epss;
+        keepPatches 1;
+        expression "0";
+        condition "pos().x<=0.02";
+    }
+    Solid3
+    {
+        field Solid;
+        keepPatches 1;
+        expression "0";
+        condition "pos().x<=0.02";
+    }
+);
+
+// ************************************************************************* //
